@@ -1,0 +1,57 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    margin: 60px;
+    width: 90vw;
+    border-radius: 10px;
+}
+.title button{
+    display: flex;
+}
+.navigation{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}
+.navigation button{
+    background-color: rgb(255, 0, 0);
+    color: whitesmoke;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+.cards{
+    margin-bottom: 20px;
+    height:30vh;
+    width: 40vw;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+.add-container{
+    margin-top: 20px;
+    width: 50%;
+    height: 50vh;
+    z-index: -1;
+    border: goldenrod 2px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
