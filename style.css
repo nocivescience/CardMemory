@@ -2,13 +2,14 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 .title{
     display:flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px;
-    margin: 60px;
+    margin: 40px;
     width: 90vw;
     border-radius: 10px;
 }
@@ -19,6 +20,7 @@ body{
     display: flex;
     width: 300px;
     justify-content: space-between;
+    align-items: center;
 }
 .navigation button{
     background-color: rgb(255, 0, 0);
@@ -32,26 +34,98 @@ body{
     border: none;
 }
 .cards{
-    margin-bottom: 20px;
-    height:30vh;
+    margin-bottom: 10px;
+    height:50vh;
     width: 40vw;
-    border: 1px solid grey;
     border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 .add-container{
-    margin-top: 20px;
-    width: 50%;
-    height: 50vh;
+    width: 42%;
+    height: 62vh;
     z-index: -1;
-    border: goldenrod 2px solid;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    opacity:0;
+    position: absolute;
+    padding: 40px;
+    top: 150px;
+    z-index:0;
+    background-color: rgb(255, 255, 255);
+    transform: rotateY(180deg) scale(0);
+    transition: transform ease .5s, opacity ease .5s;
 }
 .form-group{
     display: flex;
     flex-direction: column;
     justify-content: start;
+}
+.add-container.show{
+    opacity: 1;
+    z-index: 1;
+    transform: rotateY(0deg) scale(1);
+    transition: transform ease .5s, opacity ease .5s;
+}
+.inner-card{
+    /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.68); */
+    width: 100%;
+    height: 100%;
+}
+.btn-hide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titulo-textarea{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.card{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: none;
+}
+.active{
+    z-index:10;
+    opacity: 1;
+    transform: rotateX(0deg) rotateX(0deg);
+}
+.inner-card{
+    position: relative; /* pendiente */
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform .5s ease-in;
+    border: none;
+}
+.card.show-answer .inner-card{  /* con esto yo enalso*/
+    transform: rotateX(180deg);
+}
+.inner-card-front, .inner-card-back{
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inner-card-front{
+    transform: rotateX(0deg);
+    z-index: 2;
+    background-color: antiquewhite;
+}
+.inner-card-back{
+    transform: rotateX(180deg);
+    background-color: whitesmoke;
 }

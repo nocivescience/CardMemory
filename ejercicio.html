@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .color-fondo{
+        background-color: red;
+        width: 60px;
+        height: 30px;
+    }
+    .color-borde{
+        border: 6px yellow solid;
+        height: 40px;
+        width: 10px;
+    }
+    .estilo-primitivo{
+        background-color: purple;
+        border: 10px dashed salmon;
+        width: 30px;
+        height: 30px;
+    }
+</style>
+<body>
+    <div class="estilo-primitivo" id="mi-cosa"></div>
+    <script>
+        const miCosa=document.getElementById('mi-cosa')
+        miCosa.addEventListener('click', function(){
+            miCosa.className='color-borde color-fondo'
+        })
+    </script>
+</body>
+</html>
