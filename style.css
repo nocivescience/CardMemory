@@ -138,3 +138,6 @@ body{
     transform: translateX(70%) rotateY(-30deg);
     opacity: .12;
 }
+.card.left, .card.right{
+    transition: all .4s ease-in-out;
+}
