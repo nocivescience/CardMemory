@@ -10,6 +10,18 @@ const prevEl=document.getElementById('prev')
 const nextEl=document.getElementById('next')
 let currentActive=0;
 let cardsEl=[]
+const cardsData=getCardsData()
+function createCards(){
+    cardsData.forEach((data,index)=>createCard(data,index))
+}
+function getCardsData(){
+    const cards=JSON.parse(localStorage.getItem('cards'))
+    return cards===null?[]:cards
+}
+function setCardsData(cards){
+    localStorage.setItem('cards',JSON.stringify(cards))
+    window.location.reload()
+}
 function aplicacion(){
     addContainer.classList.toggle('show')
 }
@@ -25,22 +37,34 @@ function createCard(data,index){
             <div class='inner-card-back shadow'>${data.answer}</div>
         </div>
     `
+    card.addEventListener('click',()=>card.classList.toggle('show-answer'))
     cardsEl.push(card)
     cardsContainer.appendChild(card)
-    card.addEventListener('click',()=>card.classList.toggle('show-answer'))
+    updateCurrentCard()
 }
 function updateCurrentCard(){
     currentEl.innerText=`
         ${currentActive+1}/${cardsEl.length}
     `
 }
+createCards()
 prevEl.addEventListener('click', ()=>{
+    cardsEl[currentActive].className='card right'
     currentActive-=1
-    if(currentActive<0) return currentActive=0
+    if(currentActive<0) {
+        currentActive=0
+    }
+    cardsEl[currentActive].className='card active'
     updateCurrentCard()
 })
 nextEl.addEventListener('click',()=>{
+    cardsEl[currentActive].className='card left'
     currentActive+=1
+    if(currentActive>cardsEl.length-1) {
+        currentActive=cardsEl.length-1
+    }
+    cardsEl[currentActive].className='card active'
+
     updateCurrentCard()
 })
 showCard.addEventListener('click',()=>{
@@ -58,5 +82,8 @@ addCard.addEventListener('click', ()=>{
         createCard(newCard)
         questEl.value=''
         answerEl.value=''
+        addContainer.classList.remove('show')
+        cardsData.push(newCard);
+        setCardsData(cardsData)
     }
 })
